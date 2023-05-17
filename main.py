@@ -1,16 +1,17 @@
-# This is a sample Python script.
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def computer_network():
+    graph = []
+    with open('alg_rf7.txt') as input_file:
+        while True:
+            adj_lst = [int(i) for i in input_file.readline().split()]
+            if adj_lst:
+                adj_lst.pop(0)
+                graph.append(set(adj_lst))
+            else:
+                break
+    return graph
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    comp_network_graph = computer_network()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
