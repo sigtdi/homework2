@@ -16,7 +16,8 @@ def gen_UPA(n, m):
         upaG[i] = nodes_of_g_complete.difference({i})
 
     # создаем объект класса UPATrial для проведения случайных испытаний;
-    # для каждой добавляемой вершины проводим испытания и соединем ее с новыми соседями, полученными в результате испытаний
+    # для каждой добавляемой вершины проводим испытания и соединем ее с новыми соседями,
+    # полученными в результате испытаний
     upatrial = UPATrial(m)
     for v in range(n - m + 1, n):
         new_node_neighbors = upatrial.run_trial(m)
@@ -27,7 +28,6 @@ def gen_UPA(n, m):
     return upaG
 
 
-
-
 if __name__ == '__main__':
-    pass
+    n, m = map(int, input().split())
+    G = gen_UPA(n, m)
