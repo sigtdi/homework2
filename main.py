@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     er_graph = gen_ER(n, p)
     graphs = {
-        "Тестовая модель компьютерной сети": { "type": comp_network_graph, "name": "Тестовая модель компьютерной сети"},
+        "Тестовая модель компьютерной сети": {"type": comp_network_graph, "name": "Тестовая модель компьютерной сети"},
         "UPA-граф": {"type": upa_graph, "name": "UPA-граф"},
         "ER-граф": {"type": er_graph, "name": "ER-граф"}}
 
