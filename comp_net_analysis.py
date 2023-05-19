@@ -1,37 +1,62 @@
 from random import shuffle
 
+
 def compute_resilience(graph, vertices):
-    connect_comp = [] #Список размеров наибольших компонент связности
+    # Список размеров наибольших компонент связности
+    connect_comp = []
     n = len(graph)
-    del_vertices = [] #Список уже удаленных вершин
+    # Список уже удаленных вершин
+    del_vertices = []
+
     for vertex in vertices:
         del_vertices.append(vertex)
         neighbors = graph[vertex]
+
         for u in neighbors:
-            graph[u].remove(vertex)  #Удаяем спискам смежности других вершин удаляемую вершину
-        graph[vertex] = set()  # Удаляем ребра из текущей удаляемой вершины
-        visited = [False] * n #Список, в котором храним информацию о посещенных вершинах
-        answer = 0 #Размер наибольшей компоненты связности
+            # Удаляем спискам смежности других вершин удаляемую вершину
+            graph[u].remove(vertex)
+        # Удаляем ребра из текущей удаляемой вершины
+        graph[vertex] = set()
+
+        # Список, в котором храним информацию о посещенных вершинах
+        visited = [False] * n
+        # Размер наибольшей компоненты связности
+        answer = 0
+
         for i in range(n):
-            temp_size = 0 #В этой переменной сохраняем размер текущей компоненты связности
-            if visited[i] or i in del_vertices: #Если вершина уже посещена, мы посчитали эту компоненту
+            # Сохраняем размер текущей компоненты связности
+            temp_size = 0
+
+            # Если вершина уже посещена, мы посчитали эту компоненту
+            if visited[i] or i in del_vertices:
                 continue
-            visited[i] = True #Нашли непосещенную вершину - новая компонента связности
-            queue = [i] #Очередь обработки вершин в этой компоненте
+
+            # Нашли не посещенную вершину - новая компонента связности
+            visited[i] = True
+            # Очередь обработки вершин в этой компоненте
+            queue = [i]
             temp_size += 1
+
             while queue:
                 v = queue.pop()
-                for to in graph[v]: #Помечаем всех соседей вершины из очереди
+                # Помечаем всех соседей вершины из очереди
+                for to in graph[v]:
                     if not visited[to]:
-                        temp_size += 1 #За каждую помеченную вершину добавляем размер компоненты
+                        # За каждую помеченную вершину добавляем размер компоненты
+                        temp_size += 1
                         visited[to] = True
-                        queue.append(to) #Добавляем в очередь соседние вершины
+                        # Добавляем в очередь соседние вершины
+                        queue.append(to)
+
             answer = max(answer, temp_size)
-        connect_comp.append(answer) #Добавляем размер текущей наибольшей компоненты связности
+
+        # Добавляем размер текущей наибольшей компоненты связности
+        connect_comp.append(answer)
+
     return connect_comp
 
 
-def random_order(n): #Возвращает список вершин в случайном порядке
+def random_order(n):
     res = [i for i in range(n)]
     shuffle(res)
     return res
@@ -40,5 +65,5 @@ def random_order(n): #Возвращает список вершин в случ
 def copy_graph(graph):
     new_graph = []
     for node in graph:
-        new_graph.append(node)
+        new_graph.append(set(node))
     return new_graph
