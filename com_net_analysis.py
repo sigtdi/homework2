@@ -1,3 +1,5 @@
+from random import shuffle
+
 def compute_resilience(graph, vertices):
     connect_comp = [] #Список размеров наибольших компонент связности
     n = len(graph)
@@ -27,3 +29,7 @@ def compute_resilience(graph, vertices):
             answer = max(answer, temp_size)
         connect_comp.append(answer) #Добавляем размер текущей наибольшей компоненты связности
     return connect_comp
+
+
+def random_order(n): #Возвращает список вершин в случайном порядке
+    return shuffle([i for i in range(n)])
