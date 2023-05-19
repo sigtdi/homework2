@@ -35,3 +35,7 @@ def random_order(n): #Возвращает список вершин в случ
     res = [i for i in range(n)]
     shuffle(res)
     return res
+
+
+def copy_graph(graph):
+    pass
