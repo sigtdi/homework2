@@ -1,13 +1,10 @@
-################
-# в разработке #
-################
-from graph_operations import *
+'''
+    Не очень эффективная реализация удаление вершин с учетом структуры графа
+    Удаление происходит в порядке убывания степеней вершин, находящихся в графе
+'''
 
-def delete_node(ugraph, node):
-    neighbors = ugraph[node]
-    ugraph[node] = None
-    for neighbor in neighbors:
-        ugraph[neighbor].remove(node)
+# импорт вспомогательных функций для работы с графом
+from graph_operations import *
 
 
 def targeted_order(ugraph):
