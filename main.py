@@ -1,4 +1,3 @@
-from UPA_gr import gen_UPA
 from computer_network_gr import computer_network
 
 
