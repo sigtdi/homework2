@@ -1,5 +1,5 @@
-def computer_network():
-    graph = [set() for i in range(1347)] #Создаем список пустых множеств нужного размера
+def computer_network(n):
+    graph = [set() for i in range(n)] #Создаем список пустых множеств нужного размера
     with open('alg_rf7.txt') as input_file:
         for line in input_file.readlines():
             adj_lst = list(map(int, line.split())) #Проходим по всем строкам в файле, создаем из них списки смежности

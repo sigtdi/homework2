@@ -1,9 +1,21 @@
-from computer_network_gr import computer_network
 import com_net_analysis
+from computer_network_gr import computer_network
+from UPA_gr import gen_UPA
+from ER_gr import gen_ER
+import matplotlib.pyplot as plt
+import time
+
+
 
 
 if __name__ == '__main__':
-    comp_network_graph = computer_network()
-    #g = [{4, 5}, {2, 3}, {1, 3, 4}, {1, 2, 4}, {5, 0}, {0, 4}]
-    #print(com_net_analysis.compute_resilience(g, [i for i in range(6)]))
+    n = 1347
+    """
+    m и p Подобрать
+    """
+    m, p = 0, 0
+    comp_network_graph = computer_network(n)
+    upa_graph = gen_UPA(n, m)
+    er_graph = gen_ER(n, p)
+
 
