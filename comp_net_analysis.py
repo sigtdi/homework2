@@ -6,10 +6,10 @@ def compute_resilience(graph, vertices):
     del_vertices = [] #Список уже удаленных вершин
     for vertex in vertices:
         del_vertices.append(vertex)
-        graph[vertex] = set() #Удаляем ребра из текущей удаляемой вершины
-        for adj_lst in graph:
-            if vertex in adj_lst:
-                adj_lst.remove(vertex)  #Удаяем спискам смежности других вершин удаляемую вершину
+        neighbors = graph[vertex]
+        for u in neighbors:
+            graph[u].remove(vertex)  #Удаяем спискам смежности других вершин удаляемую вершину
+        graph[vertex] = set()  # Удаляем ребра из текущей удаляемой вершины
         visited = [False] * n #Список, в котором храним информацию о посещенных вершинах
         answer = 0 #Размер наибольшей компоненты связности
         for i in range(n):
@@ -38,4 +38,7 @@ def random_order(n): #Возвращает список вершин в случ
 
 
 def copy_graph(graph):
-    pass
+    new_graph = []
+    for node in graph:
+        new_graph.append(node)
+    return new_graph
