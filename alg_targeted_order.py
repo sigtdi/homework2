@@ -1,13 +1,7 @@
 ################
 # в разработке #
 ################
-def copy_graph(graph):
-    new_graph = []
-    num_nodes = len(graph)
-    for node in range(num_nodes):
-        new_graph.append(set(graph[node]))
-    return new_graph
-
+from graph_operations import *
 
 def delete_node(ugraph, node):
     neighbors = ugraph[node]
@@ -35,7 +29,7 @@ def targeted_order(ugraph):
 
     return order
 
-
+# testing
 if __name__ == '__main__':
     from UPA_gr import gen_UPA
     g = gen_UPA(5, 2)

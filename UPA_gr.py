@@ -10,7 +10,7 @@ def gen_UPA(n, m):
     '''
 
     # инициализируем граф и создаем полносвязный граф на m вершинах
-    upaG = [set() for _ in range(n)]
+    upaG = [set([]) for _ in range(n)]
     nodes_of_g_complete = set(range(m))
     for i in range(m):
         upaG[i] = nodes_of_g_complete.difference({i})
@@ -27,7 +27,7 @@ def gen_UPA(n, m):
 
     return upaG
 
-
+# testing
 if __name__ == '__main__':
     n, m = map(int, input().split())
     G = gen_UPA(n, m)
