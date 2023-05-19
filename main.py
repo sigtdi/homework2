@@ -27,9 +27,12 @@ if __name__ == '__main__':
     plt.rcParams['image.interpolation'] = 'nearest'
     plt.rcParams['image.cmap'] = 'gray'
 
-    for graph in graphs:
-        result = com_net_analysis.compute_resilience(com_net_analysis.copy_graph(graphs[graph]["type"]), com_net_analysis.random_order(n))
-        plt.plot(result, label=graphs[graph]["name"])
+    #for graph in graphs:
+        #result = com_net_analysis.compute_resilience(com_net_analysis.copy_graph(graphs[graph]["type"]), com_net_analysis.random_order(n))
+        #plt.plot(result, label=graphs[graph]["name"])
+
+    result = com_net_analysis.compute_resilience(comp_network_graph, com_net_analysis.random_order(n))
+    plt.plot(result, label="Тест")
 
     plt.ylabel('размер КС')
     plt.legend()
