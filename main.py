@@ -1,17 +1,5 @@
-
-def computer_network():
-    graph = [set() for i in range(1347)] #Создаем список пустых множеств нужного размера
-    with open('alg_rf7.txt') as input_file:
-        for line in input_file.readlines():
-            adj_lst = list(map(int, line.split())) #Проходим по всем строкам в файле, создаем из них списки смежности
-            if adj_lst:
-                vertex1 = adj_lst.pop(0)
-                graph[vertex1].update(adj_lst) #Добаляем список смежности в множество в нужной ячейке списка
-                for vertex2 in adj_lst:
-                    graph[vertex2].add(vertex1) #Добавляем в списки смежности соседних вершин текущую вершину
-            else:
-                break
-    return graph
+from UPA_gr import gen_UPA
+from computer_network_gr import computer_network
 
 
 def compute_resilience(graph, vertices):
@@ -46,5 +34,5 @@ def compute_resilience(graph, vertices):
 
 if __name__ == '__main__':
     comp_network_graph = computer_network()
-    print(compute_resilience([{4, 5}, {2, 3}, {3, 4, 1}, {1, 2, 4}, {3, 2, 0, 5}, {0, 4}], [i for i in range(6)]))
+    print(compute_resilience(g, [i for i in range(6)]))
 
