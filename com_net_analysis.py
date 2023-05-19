@@ -32,4 +32,6 @@ def compute_resilience(graph, vertices):
 
 
 def random_order(n): #Возвращает список вершин в случайном порядке
-    return shuffle([i for i in range(n)])
+    res = [i for i in range(n)]
+    shuffle(res)
+    return res
