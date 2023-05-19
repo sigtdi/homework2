@@ -1,13 +1,17 @@
+################
+# в разработке #
+################
 def copy_graph(graph):
-    new_graph = {}
-    for node in graph:
-        new_graph[node] = set(graph[node])
+    new_graph = []
+    num_nodes = len(graph)
+    for node in range(num_nodes):
+        new_graph.append(set(graph[node]))
     return new_graph
 
 
 def delete_node(ugraph, node):
     neighbors = ugraph[node]
-    ugraph.pop(node)
+    ugraph[node] = None
     for neighbor in neighbors:
         ugraph[neighbor].remove(node)
 
@@ -16,21 +20,23 @@ def targeted_order(ugraph):
     new_graph = copy_graph(ugraph)
 
     order = []
-    while len(new_graph) > 0:
+    num_nodes = len(new_graph)
+    num_nodes_order = 0
+    while num_nodes != num_nodes_order:
         max_degree = -1
-        for node in new_graph:
-            if len(new_graph[node]) > max_degree:
+        for node in range(num_nodes):
+            if new_graph[node] is not None and len(new_graph[node]) > max_degree:
                 max_degree = len(new_graph[node])
                 max_degree_node = node
 
-        neighbors = new_graph[max_degree_node]
-        new_graph.pop(max_degree_node)
-        for neighbor in neighbors:
-            new_graph[neighbor].remove(max_degree_node)
-
+        delete_node(new_graph, max_degree_node)
         order.append(max_degree_node)
+        num_nodes_order += 1
+
     return order
 
 
 if __name__ == '__main__':
-    pass
+    from UPA_gr import gen_UPA
+    g = gen_UPA(5, 2)
+    print(targeted_order(g), g)
