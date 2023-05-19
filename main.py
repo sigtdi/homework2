@@ -37,8 +37,8 @@ def compute_resilience(graph, vertices):
                     if not visited[to]:
                         temp_size += 1 #За каждую помеченную вершину добавляем размер компоненты
                         visited[to] = True
-                        answer = max(answer, temp_size)
                         queue.append(to) #Добавляем в очередь соседние вершины
+            answer = max(answer, temp_size)
         connect_comp.append(answer) #Добавляем размер текущей наибольшей компоненты связности
     return connect_comp
 
@@ -46,4 +46,5 @@ def compute_resilience(graph, vertices):
 
 if __name__ == '__main__':
     comp_network_graph = computer_network()
+    print(compute_resilience([{4, 5}, {2, 3}, {3, 4, 1}, {1, 2, 4}, {3, 2, 0, 5}, {0, 4}], [i for i in range(6)]))
 
