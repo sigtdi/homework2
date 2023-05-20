@@ -1,8 +1,11 @@
 from random import shuffle
 import graph_operations
 import time
+# импортируем модуль, предоставляющий интерфейс для дополнительного сборщика мусора
+import gc
 
 from UPA_gr import gen_UPA
+
 
 
 def compute_resilience(graph, vertices):
@@ -67,6 +70,8 @@ def emp_analysis(func, R, step):
     res = []
     for n in range(10, R, step):
         graph = gen_UPA(n, 5)
+        # вручную вызываем модуль сборки мусора
+        gc.collect()
         time_start = time.time()
         func(graph)
         res.append((time.time() - time_start))
