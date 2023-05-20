@@ -67,7 +67,8 @@ def emp_analysis(func, R, step):
     res = []
     for n in range(10, R, step):
         graph = gen_UPA(n, 5)
-        time_start = time.process_time()
+        time_start = time.time()
         func(graph)
-        res.append((time.process_time() - time_start))
+        time_stop = time.time()
+        res.append((time_stop - time_start))
     return res
