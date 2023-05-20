@@ -1,4 +1,8 @@
 from random import shuffle
+import graph_operations
+import time
+
+from UPA_gr import gen_UPA
 
 
 def compute_resilience(graph, vertices):
@@ -12,11 +16,8 @@ def compute_resilience(graph, vertices):
         del_vertices.append(vertex)
         neighbors = graph[vertex]
 
-        for u in neighbors:
-            # Удаляем спискам смежности других вершин удаляемую вершину
-            graph[u].remove(vertex)
-        # Удаляем ребра из текущей удаляемой вершины
-        graph[vertex] = set()
+        # Удаляем вершину
+        graph_operations.delete_node(graph, vertex)
 
         # Список, в котором храним информацию о посещенных вершинах
         visited = [False] * n
@@ -62,8 +63,11 @@ def random_order(n):
     return res
 
 
-def copy_graph(graph):
-    new_graph = []
-    for node in graph:
-        new_graph.append(set(node))
-    return new_graph
+def emp_analysis(func, R, step):
+    res = []
+    for n in range(10, R, step):
+        graph = gen_UPA(n, 5)
+        time_start = time.process_time()
+        func(graph)
+        res.append((time.process_time() - time_start))
+    return res
