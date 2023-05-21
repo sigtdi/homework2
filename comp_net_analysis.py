@@ -1,8 +1,6 @@
 from random import shuffle
 import graph_operations
 import time
-# импортируем модуль, предоставляющий интерфейс для дополнительного сборщика мусора
-import gc
 
 from UPA_gr import gen_UPA
 
