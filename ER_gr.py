@@ -1,6 +1,7 @@
 import random
 
 
+# Звукова
 def gen_ER(n, p):
     # Граф в виде списка списков смежности, представленных в виде множеств
     graph = [set() for i in range(n)]

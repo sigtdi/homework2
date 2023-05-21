@@ -5,6 +5,7 @@
     delete_node - удаляет вершину из графа
 '''
 
+# Павлова
 def copy_graph(graph):
     '''
         :параметр graph: неориентированный граф
@@ -19,6 +20,7 @@ def copy_graph(graph):
     return new_graph
 
 
+# Павлова
 def delete_node(ugraph, node):
     '''
         :параметр ugraph: неориентированный граф

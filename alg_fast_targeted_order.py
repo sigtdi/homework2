@@ -7,6 +7,7 @@
 from graph_operations import *
 
 
+# Павлова
 def fast_targeted_order(ugraph):
     '''
         :параметр ugraph: неориентированный граф

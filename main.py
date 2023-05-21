@@ -8,6 +8,7 @@ from alg_fast_targeted_order import fast_targeted_order
 import matplotlib.pyplot as plt
 
 
+# Звукова
 if __name__ == '__main__':
     n = 1347
     m, p = 2, 0.003
@@ -49,6 +50,7 @@ if __name__ == '__main__':
     plt.ylabel('Размер наибольшей КС')
     plt.legend()
 
+    # Проводим анализ функций fast_targeted_order и targeted_order на различных графах
     funcs = {
         "Fast targeted order": {"func": fast_targeted_order, "name": "Fast targeted order"},
         "Targeted order": {"func": targeted_order, "name": "Targeted order"}}
@@ -56,11 +58,12 @@ if __name__ == '__main__':
     for func in funcs:
         R = 1000
         step = 10
-        result = comp_net_analysis.emp_analysis(funcs[func]["func"], R, step)
+        trials = 10
+        result = comp_net_analysis.emp_analysis(funcs[func]["func"], R, step, trials)
         plt.subplot(2, 2, 2)
         plt.plot(result, label=funcs[func]["name"])
 
-    plt.title("Оценка времени работы алгоритмов")
+    plt.title("Время работы алгоритмов")
     plt.xlabel('Количество вершин в графе /10')
     plt.ylabel('Секунды')
     plt.legend()

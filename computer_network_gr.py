@@ -1,3 +1,4 @@
+# Звукова
 def computer_network(n):
     # Создаем список пустых множеств нужного размера
     graph = [set() for i in range(n)]

@@ -7,7 +7,7 @@ import gc
 from UPA_gr import gen_UPA
 
 
-
+# Звукова
 def compute_resilience(graph, vertices):
     # Список размеров наибольших компонент связности
     connect_comp = []
@@ -60,19 +60,32 @@ def compute_resilience(graph, vertices):
     return connect_comp
 
 
+# Звукова
 def random_order(n):
     res = [i for i in range(n)]
     shuffle(res)
     return res
 
 
-def emp_analysis(func, R, step):
+# Звукова
+def emp_analysis(func, R, step, trials):
+    # Массив времени обработки графов по увеличению их размера
     res = []
+
+    # Проводим измерения на графах разного размера
     for n in range(10, R, step):
-        graph = gen_UPA(n, 5)
-        # вручную вызываем модуль сборки мусора
-        gc.collect()
-        time_start = time.time()
-        func(graph)
-        res.append((time.time() - time_start))
+        # Время выполнения серии измерений
+        temp_time = 0
+
+        # Несколько измерений на графе одного размера для усреднения результата
+        for i in range(trials):
+            graph = gen_UPA(n, 5)
+            time_start = time.time()
+            func(graph)
+            # Добавляем к общему времени время выполнения текущего измерения
+            temp_time += (time.time() - time_start)
+
+        # Кладем в массив среднее значение времени
+        res.append(temp_time / trials)
+
     return res

@@ -6,7 +6,7 @@
 # импорт вспомогательных функций для работы с графом
 from graph_operations import *
 
-
+# Павлова
 def targeted_order(ugraph):
     '''
         :параметр ugraph: неориентированный граф
